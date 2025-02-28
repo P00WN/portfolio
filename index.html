@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mein Portfolio</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">Über mich</a></li>
+        <li><a href="#projects">Projekte</a></li>
+        <li><a href="#contact">Kontakt</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Home Section -->
+  <section id="home">
+    <div class="intro">
+      <h1>Willkommen auf meinem Portfolio</h1>
+      <p>Ich bin [Dein Name], ein Webentwickler</p>
+    </div>
+  </section>
+
+  <!-- Über mich -->
+  <section id="about">
+    <h2>Über mich</h2>
+    <p>Hier beschreibst du dich selbst: Deine Erfahrungen, Fähigkeiten und Interessen.</p>
+  </section>
+
+  <!-- Projekte -->
+  <section id="projects">
+    <h2>Meine Projekte</h2>
+    <div class="project-gallery">
+      <div class="project-card">
+        <img src="images/project1.jpg" alt="Projekt 1">
+        <h3>Projekt 1</h3>
+        <p>Beschreibung des Projekts</p>
+      </div>
+      <div class="project-card">
+        <img src="images/project2.jpg" alt="Projekt 2">
+        <h3>Projekt 2</h3>
+        <p>Beschreibung des Projekts</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kontakt -->
+  <section id="contact">
+    <h2>Kontakt</h2>
+    <form action="submit_form.php" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="email">E-Mail:</label>
+      <input type="email" id="email" name="email" required>
+      <textarea name="message" id="message" rows="4" placeholder="Nachricht" required></textarea>
+      <button type="submit">Absenden</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Dein Name</p>
+  </footer>
+
+  <script src="scripts/script.js"></script>
+</body>
+</html>

@@ -128,7 +128,7 @@ contactForm.addEventListener('submit', function(e) {
   // Sie müssen Email.js einrichten: https://www.emailjs.com/
   // Ersetzen Sie diese Werte durch Ihre eigenen
   const serviceID = 'service_u3q7kas';
-  const templateID = 'service_u3q7kas';
+  const templateID = 'template_ya0vsww';
   const userID = 'hbk9niBaDHluDz-c0';
   
   const templateParams = {

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Seite nicht gefunden | Malthe Vorbeck</title>
+    <link rel="icon" href="https://ui-avatars.com/api/?name=MV&background=5c6bc0&color=fff&bold=true&rounded=true&size=128" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Basis-Stile */
+        :root {
+          --primary-color: #5c6bc0;
+          --secondary-color: #26a69a;
+          --dark-color: #2c3e50;
+          --light-color: #f4f6f9;
+          --text-color: #333;
+          --light-text: #fff;
+          --hover-color: #3f51b5;
+          --transition: all 0.3s ease;
+          --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+          /* Dark Mode Variablen */
+          --dark-bg: #121212;
+          --dark-card-bg: #1e1e1e;
+          --dark-text: #e0e0e0;
+          --dark-accent: #7986cb;
+        }
+
+        /* Dark Mode Klasse */
+        body.dark-mode {
+          background-color: var(--dark-bg);
+          color: var(--dark-text);
+        }
+
+        body.dark-mode .error-container {
+          background-color: var(--dark-card-bg);
+        }
+
+        body.dark-mode .btn.primary-btn {
+          background-color: var(--dark-accent);
+        }
+
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        html {
+          scroll-behavior: smooth;
+        }
+
+        body {
+          font-family: 'Poppins', sans-serif;
+          line-height: 1.6;
+          color: var(--text-color);
+          background-color: var(--light-color);
+          overflow-x: hidden;
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .container {
+          width: 90%;
+          max-width: 800px;
+          margin: 0 auto;
+          text-align: center;
+        }
+
+        /* Error Page Styles */
+        .error-container {
+          background-color: var(--light-text);
+          border-radius: 10px;
+          padding: 50px;
+          box-shadow: var(--box-shadow);
+          position: relative;
+          overflow: hidden;
+          margin-bottom: 30px;
+        }
+
+        .error-container::before {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 5px;
+          background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        }
+
+        .error-code {
+          font-size: 8rem;
+          font-weight: 700;
+          color: var(--primary-color);
+          line-height: 1;
+          margin-bottom: 20px;
+          position: relative;
+        }
+
+        .error-code::after {
+          content: 'Seite nicht gefunden';
+          position: absolute;
+          bottom: -5px;
+          left: 50%;
+          transform: translateX(-50%);
+          font-size: 1rem;
+          font-weight: 500;
+          color: var(--secondary-color);
+          background-color: var(--light-text);
+          padding: 0 10px;
+          border-radius: 20px;
+        }
+
+        body.dark-mode .error-code::after {
+          background-color: var(--dark-card-bg);
+        }
+
+        .error-message {
+          font-size: 1.5rem;
+          margin-bottom: 30px;
+        }
+
+        .error-description {
+          margin-bottom: 40px;
+          max-width: 600px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .emoji {
+          font-size: 3rem;
+          margin-bottom: 20px;
+          display: inline-block;
+          animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-15px);
+          }
+        }
+
+        .btn {
+          display: inline-block;
+          padding: 12px 30px;
+          border-radius: 50px;
+          text-decoration: none;
+          font-weight: 600;
+          font-size: 1rem;
+          transition: var(--transition);
+          cursor: pointer;
+          border: none;
+          outline: none;
+          margin: 0 10px 10px 0;
+        }
+
+        .primary-btn {
+          background-color: var(--primary-color);
+          color: var(--light-text);
+        }
+
+        .primary-btn:hover {
+          background-color: var(--hover-color);
+          transform: translateY(-3px);
+          box-shadow: var(--box-shadow);
+        }
+
+        .secondary-btn {
+          background-color: transparent;
+          color: var(--primary-color);
+          border: 2px solid var(--primary-color);
+        }
+
+        .secondary-btn:hover {
+          background-color: var(--primary-color);
+          color: var(--light-text);
+          transform: translateY(-3px);
+          box-shadow: var(--box-shadow);
+        }
+
+        .suggestions {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 15px;
+          margin-top: 30px;
+        }
+
+        .suggestion-item {
+          background-color: rgba(92, 107, 192, 0.1);
+          padding: 10px 20px;
+          border-radius: 50px;
+          color: var(--primary-color);
+          font-weight: 500;
+          transition: var(--transition);
+          text-decoration: none;
+        }
+
+        .suggestion-item:hover {
+          background-color: var(--primary-color);
+          color: var(--light-text);
+          transform: translateY(-3px);
+        }
+
+        /* Dark Mode Toggle */
+        .theme-toggle {
+          position: fixed;
+          right: 30px;
+          bottom: 30px;
+          width: 45px;
+          height: 45px;
+          background-color: var(--primary-color);
+          color: var(--light-text);
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          z-index: 999;
+          box-shadow: var(--box-shadow);
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+          .error-code {
+            font-size: 6rem;
+          }
+          
+          .error-message {
+            font-size: 1.2rem;
+          }
+          
+          .error-container {
+            padding: 30px;
+          }
+        }
+
+        @media screen and (max-width: 480px) {
+          .error-code {
+            font-size: 4rem;
+          }
+          
+          .emoji {
+            font-size: 2rem;
+          }
+          
+          .btn {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+          }
+        }
+    </style>
+  </head>
+  <body class="light-mode">
+    <div class="container">
+      <div class="error-container">
+        <div class="emoji">😕</div>
+        <h1 class="error-code">404</h1>
+        <h2 class="error-message">Ups! Diese Seite wurde nicht gefunden.</h2>
+        <p class="error-description">
+          Es scheint, dass die Seite, die Sie suchen, nicht existiert oder an eine andere Stelle verschoben wurde.
+        </p>
+        <div class="action-buttons">
+          <a href="index.html" class="btn primary-btn"><i class="fas fa-home"></i> Zurück zur Startseite</a>
+          <button onclick="history.back()" class="btn secondary-btn"><i class="fas fa-arrow-left"></i> Zurück zur vorherigen Seite</button>
+        </div>
+        <div class="suggestions">
+          <p>Oder besuchen Sie:</p>
+          <a href="index.html#about" class="suggestion-item">Über Mich</a>
+          <a href="index.html#skills" class="suggestion-item">Fähigkeiten</a>
+          <a href="index.html#timeline" class="suggestion-item">Werdegang</a>
+          <a href="index.html#certificates" class="suggestion-item">Zertifikate</a>
+          <a href="index.html#contact" class="suggestion-item">Kontakt</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dark Mode Toggle Button -->
+    <div class="theme-toggle">
+      <i class="fas fa-moon"></i>
+    </div>
+
+    <script>
+      // Dark Mode Toggle
+      const themeToggle = document.querySelector('.theme-toggle');
+      
+      themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        
+        if (document.body.classList.contains('dark-mode')) {
+          themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+          localStorage.setItem('theme', 'dark');
+        } else {
+          themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+          localStorage.setItem('theme', 'light');
+        }
+      });
+      
+      // Überprüfen, ob ein gespeichertes Theme existiert
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+      }
+    </script>
+  </body>
+</html> 

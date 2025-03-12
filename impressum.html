@@ -561,8 +561,7 @@
             const t = translations[lang];
             
             // Navigation & Links
-            document.querySelector('.back-button').textContent = t.backToHome;
-            document.querySelector('.back-button i').outerHTML = '<i class="fas fa-arrow-left"></i>';
+            document.querySelector('.back-button').innerHTML = `<i class="fas fa-arrow-left"></i> ${t.backToHome}`;
             
             // Hauptüberschrift
             document.querySelector('.section-title').textContent = t.legalTitle;

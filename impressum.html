@@ -237,6 +237,41 @@
             background-color: var(--dark-accent);
         }
 
+        /* Sprach-Umschalter */
+        .language-selector {
+            position: fixed;
+            bottom: 30px;
+            right: 90px;
+            background-color: var(--primary-color);
+            border-radius: 50px;
+            padding: 5px;
+            box-shadow: var(--box-shadow);
+            z-index: 999;
+            display: flex;
+        }
+
+        .language-option {
+            padding: 8px 12px;
+            color: var(--light-text);
+            cursor: pointer;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .language-option.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .language-option:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        body.dark-mode .language-selector {
+            background-color: var(--dark-accent);
+        }
+
         /* Responsive */
         @media screen and (max-width: 768px) {
             .section-title {
@@ -281,7 +316,7 @@
                     <i class="fas fa-envelope"></i>
                     <div>
                         <strong>Kontakt:</strong><br>
-                        E-Mail: malthe.vorbeck.04@gmail.com
+                        E-Mail: vorbeck@malthe.info
                     </div>
                 </div>
                 
@@ -328,7 +363,7 @@
                 <p>
                 Malthe Vorbeck<br>
                 Lüneburg, Deutschland<br>
-                E-Mail: malthe.vorbeck.04@gmail.com
+                E-Mail: vorbeck@malthe.info
                 </p>
                 
                 <h3>3. Datenerfassung auf meiner Website</h3>
@@ -353,6 +388,12 @@
     <!-- Dark Mode Toggle Button -->
     <div class="theme-toggle" title="Dark Mode umschalten" aria-label="Dark Mode umschalten">
         <i class="fas fa-moon"></i>
+    </div>
+
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <div class="language-option" data-lang="de">DE</div>
+        <div class="language-option active" data-lang="en">EN</div>
     </div>
 
     <script>
@@ -380,6 +421,230 @@
             document.body.classList.add('dark-mode');
             themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
         }
+
+        // Übersetzungen
+        const translations = {
+            de: {
+                // Navigation & Links
+                backToHome: 'Zurück zur Startseite',
+                
+                // Hauptüberschrift
+                legalTitle: 'Rechtliche Informationen',
+                
+                // Impressum
+                imprintTitle: 'Impressum',
+                personInfo: 'Angaben gemäß § 5 TMG:',
+                contactTitle: 'Kontakt:',
+                location: 'Lüneburg, Deutschland',
+                
+                // Haftungsausschluss
+                disclaimerTitle: 'Haftungsausschluss:',
+                liabilityContentTitle: 'Haftung für Inhalte',
+                liabilityContentText: 'Die Inhalte meiner Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann ich jedoch keine Gewähr übernehmen. Als Diensteanbieter bin ich gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG bin ich als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.',
+                liabilityLinksTitle: 'Haftung für Links',
+                liabilityLinksText: 'Mein Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte ich keinen Einfluss habe. Deshalb kann ich für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar.',
+                copyrightTitle: 'Urheberrecht',
+                copyrightText: 'Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.',
+                
+                // Datenschutz
+                privacyTitle: 'Datenschutzerklärung',
+                privacyOverviewTitle: '1. Datenschutz auf einen Blick',
+                generalNotesTitle: 'Allgemeine Hinweise',
+                generalNotesText: 'Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie meine Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.',
+                dataCollectionTitle: 'Datenerfassung auf dieser Website',
+                dataCollectionText: 'Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Impressum dieser Website entnehmen.',
+                howCollectTitle: 'Wie erfasse ich Ihre Daten?',
+                howCollectText: 'Ihre Daten werden zum einen dadurch erhoben, dass Sie mir diese mitteilen. Hierbei kann es sich z.B. um Daten handeln, die Sie in ein Kontaktformular eingeben.\n\nAndere Daten werden automatisch beim Besuch der Website durch meine IT-Systeme erfasst. Das sind vor allem technische Daten (z.B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs). Die Erfassung dieser Daten erfolgt automatisch, sobald Sie diese Website betreten.',
+                whatForTitle: 'Wofür nutze ich Ihre Daten?',
+                whatForText: 'Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten. Andere Daten können zur Analyse Ihres Nutzerverhaltens verwendet werden.',
+                rightsTitle: 'Welche Rechte haben Sie bezüglich Ihrer Daten?',
+                rightsText: 'Sie haben jederzeit das Recht unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung, Sperrung oder Löschung dieser Daten zu verlangen. Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit unter der im Impressum angegebenen Adresse an mich wenden.',
+                
+                generalObligationsTitle: '2. Allgemeine Hinweise und Pflichtinformationen',
+                dataProtectionTitle: 'Datenschutz',
+                dataProtectionText: 'Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Ich behandle Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.',
+                respEntityTitle: 'Hinweis zur verantwortlichen Stelle',
+                respEntityText: 'Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:',
+                
+                dataCollectionWebsiteTitle: '3. Datenerfassung auf meiner Website',
+                cookiesTitle: 'Cookies',
+                cookiesText: 'Die Internetseiten verwenden teilweise so genannte Cookies. Cookies richten auf Ihrem Rechner keinen Schaden an und enthalten keine Viren. Cookies dienen dazu, mein Angebot nutzerfreundlicher, effektiver und sicherer zu machen. Cookies sind kleine Textdateien, die auf Ihrem Rechner abgelegt werden und die Ihr Browser speichert.\n\nDie meisten der von mir verwendeten Cookies sind so genannte "Session-Cookies". Sie werden nach Ende Ihres Besuchs automatisch gelöscht. Andere Cookies bleiben auf Ihrem Endgerät gespeichert bis Sie diese löschen. Diese Cookies ermöglichen es mir, Ihren Browser beim nächsten Besuch wiederzuerkennen.\n\nSie können Ihren Browser so einstellen, dass Sie über das Setzen von Cookies informiert werden und Cookies nur im Einzelfall erlauben, die Annahme von Cookies für bestimmte Fälle oder generell ausschließen sowie das automatische Löschen der Cookies beim Schließen des Browser aktivieren. Bei der Deaktivierung von Cookies kann die Funktionalität dieser Website eingeschränkt sein.',
+                contactFormTitle: 'Kontaktformular',
+                contactFormText: 'Wenn Sie mir per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei mir gespeichert. Diese Daten gebe ich nicht ohne Ihre Einwilligung weiter.',
+                
+                // Footer
+                copyright: 'Alle Rechte vorbehalten.'
+            },
+            en: {
+                // Navigation & Links
+                backToHome: 'Back to Homepage',
+                
+                // Main Heading
+                legalTitle: 'Legal Information',
+                
+                // Imprint
+                imprintTitle: 'Imprint',
+                personInfo: 'Information according to § 5 TMG:',
+                contactTitle: 'Contact:',
+                location: 'Lüneburg, Germany',
+                
+                // Disclaimer
+                disclaimerTitle: 'Disclaimer:',
+                liabilityContentTitle: 'Liability for Content',
+                liabilityContentText: 'The contents of my pages were created with great care. However, I cannot guarantee the accuracy, completeness, and timeliness of the content. As a service provider, I am responsible for my own content on these pages in accordance with § 7 para.1 TMG and general laws. According to §§ 8 to 10 TMG, however, I am not obligated to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity.',
+                liabilityLinksTitle: 'Liability for Links',
+                liabilityLinksText: 'My offer contains links to external websites of third parties, on whose contents I have no influence. Therefore, I cannot assume any liability for these external contents. The respective provider or operator of the pages is always responsible for the content of the linked pages. The linked pages were checked for possible legal violations at the time of linking. Illegal content was not apparent at the time of linking.',
+                copyrightTitle: 'Copyright',
+                copyrightText: 'The content and works created by the site operator on these pages are subject to German copyright law. The reproduction, processing, distribution, and any kind of exploitation outside the limits of copyright require the written consent of the respective author or creator.',
+                
+                // Privacy Policy
+                privacyTitle: 'Privacy Policy',
+                privacyOverviewTitle: '1. Privacy at a Glance',
+                generalNotesTitle: 'General Information',
+                generalNotesText: 'The following notes provide a simple overview of what happens to your personal data when you visit my website. Personal data is any data by which you can be personally identified.',
+                dataCollectionTitle: 'Data Collection on this Website',
+                dataCollectionText: 'Data processing on this website is carried out by the website operator. You can find their contact details in the imprint of this website.',
+                howCollectTitle: 'How do I collect your data?',
+                howCollectText: 'On the one hand, your data is collected when you provide it to me. This can be, for example, data that you enter in a contact form.\n\nOther data is automatically collected by my IT systems when you visit the website. This is mainly technical data (e.g. internet browser, operating system, or time of page view). This data is collected automatically as soon as you enter this website.',
+                whatForTitle: 'What do I use your data for?',
+                whatForText: 'Part of the data is collected to ensure error-free provision of the website. Other data may be used to analyze your user behavior.',
+                rightsTitle: 'What rights do you have regarding your data?',
+                rightsText: 'You have the right to receive information about the origin, recipient, and purpose of your stored personal data free of charge at any time. You also have the right to request the correction, blocking, or deletion of this data. You can contact me at the address given in the imprint at any time for this and other questions on the subject of data protection.',
+                
+                generalObligationsTitle: '2. General Information and Mandatory Disclosures',
+                dataProtectionTitle: 'Data Protection',
+                dataProtectionText: 'The operators of these pages take the protection of your personal data very seriously. I treat your personal data confidentially and in accordance with the statutory data protection regulations and this privacy policy.',
+                respEntityTitle: 'Information about the responsible entity',
+                respEntityText: 'The responsible entity for data processing on this website is:',
+                
+                dataCollectionWebsiteTitle: '3. Data Collection on my Website',
+                cookiesTitle: 'Cookies',
+                cookiesText: 'The internet pages partly use so-called cookies. Cookies do not harm your computer and do not contain viruses. Cookies serve to make my offer more user-friendly, effective, and secure. Cookies are small text files that are stored on your computer and saved by your browser.\n\nMost of the cookies I use are so-called "session cookies". They are automatically deleted after your visit. Other cookies remain stored on your device until you delete them. These cookies allow me to recognize your browser the next time you visit.\n\nYou can set your browser so that you are informed about the setting of cookies and only allow cookies in individual cases, exclude the acceptance of cookies for certain cases or generally, and activate the automatic deletion of cookies when closing the browser. When deactivating cookies, the functionality of this website may be limited.',
+                contactFormTitle: 'Contact Form',
+                contactFormText: 'If you send me inquiries via the contact form, your details from the inquiry form, including the contact data you provided there, will be stored by me for the purpose of processing the inquiry and in case of follow-up questions. I will not share this data without your consent.',
+                
+                // Footer
+                copyright: 'All Rights Reserved.'
+            }
+        };
+
+        // Sprachoptionen selektieren
+        const languageOptions = document.querySelectorAll('.language-option');
+
+        // Spracheinstellung laden oder Standardwert setzen
+        let currentLang = localStorage.getItem('language') || 'de';
+
+        // Sprachoptionen UI-Status setzen
+        languageOptions.forEach(option => {
+            if (option.getAttribute('data-lang') === currentLang) {
+                option.classList.add('active');
+            } else {
+                option.classList.remove('active');
+            }
+            
+            // Event-Listener für Sprachumschaltung
+            option.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                
+                // UI-Status aktualisieren
+                languageOptions.forEach(opt => opt.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Sprache speichern und Seite übersetzen
+                localStorage.setItem('language', lang);
+                translatePage(lang);
+            });
+        });
+
+        // Seite übersetzen
+        function translatePage(lang) {
+            const t = translations[lang];
+            
+            // Navigation & Links
+            document.querySelector('.back-button').textContent = t.backToHome;
+            document.querySelector('.back-button i').outerHTML = '<i class="fas fa-arrow-left"></i>';
+            
+            // Hauptüberschrift
+            document.querySelector('.section-title').textContent = t.legalTitle;
+            
+            // Impressum
+            document.querySelector('.impressum-container h2').textContent = t.imprintTitle;
+            
+            const addressDivs = document.querySelectorAll('.address div');
+            addressDivs[0].querySelector('strong').textContent = t.personInfo;
+            addressDivs[0].innerHTML = addressDivs[0].innerHTML.replace(
+                addressDivs[0].innerHTML.split('<br>')[1],
+                'Malthe Vorbeck<br>Lüneburg, ' + (lang === 'de' ? 'Deutschland' : 'Germany')
+            );
+            
+            addressDivs[1].querySelector('strong').textContent = t.contactTitle;
+            
+            // Haftungsausschluss
+            const h3Elements = document.querySelectorAll('.impressum-container h3, .data-privacy h3');
+            h3Elements[0].textContent = t.disclaimerTitle;
+            
+            const h4Elements = document.querySelectorAll('.impressum-container h4, .data-privacy h4');
+            h4Elements[0].textContent = t.liabilityContentTitle;
+            document.querySelectorAll('.impressum-container p')[0].textContent = t.liabilityContentText;
+            
+            h4Elements[1].textContent = t.liabilityLinksTitle;
+            document.querySelectorAll('.impressum-container p')[1].textContent = t.liabilityLinksText;
+            
+            h4Elements[2].textContent = t.copyrightTitle;
+            document.querySelectorAll('.impressum-container p')[2].textContent = t.copyrightText;
+            
+            // Datenschutz
+            document.querySelector('.data-privacy h2').textContent = t.privacyTitle;
+            h3Elements[1].textContent = t.privacyOverviewTitle;
+            
+            h4Elements[3].textContent = t.generalNotesTitle;
+            document.querySelectorAll('.data-privacy p')[0].textContent = t.generalNotesText;
+            
+            h4Elements[4].textContent = t.dataCollectionTitle;
+            document.querySelectorAll('.data-privacy p')[1].textContent = t.dataCollectionText;
+            
+            h4Elements[5].textContent = t.howCollectTitle;
+            const howCollectParagraphs = t.howCollectText.split('\n\n');
+            document.querySelectorAll('.data-privacy p')[2].textContent = howCollectParagraphs[0];
+            document.querySelectorAll('.data-privacy p')[3].textContent = howCollectParagraphs[1];
+            
+            h4Elements[6].textContent = t.whatForTitle;
+            document.querySelectorAll('.data-privacy p')[4].textContent = t.whatForText;
+            
+            h4Elements[7].textContent = t.rightsTitle;
+            document.querySelectorAll('.data-privacy p')[5].textContent = t.rightsText;
+            
+            h3Elements[2].textContent = t.generalObligationsTitle;
+            
+            h4Elements[8].textContent = t.dataProtectionTitle;
+            document.querySelectorAll('.data-privacy p')[6].textContent = t.dataProtectionText;
+            
+            h4Elements[9].textContent = t.respEntityTitle;
+            document.querySelectorAll('.data-privacy p')[7].textContent = t.respEntityText;
+            
+            // Adress-Block in Datenschutz
+            const privacyAddress = document.querySelectorAll('.data-privacy p')[8];
+            privacyAddress.innerHTML = 'Malthe Vorbeck<br>' + 
+                                    'Lüneburg, ' + (lang === 'de' ? 'Deutschland' : 'Germany') + '<br>' +
+                                    'E-Mail: vorbeck@malthe.info';
+            
+            h3Elements[3].textContent = t.dataCollectionWebsiteTitle;
+            
+            h4Elements[10].textContent = t.cookiesTitle;
+            const cookiesParagraphs = t.cookiesText.split('\n\n');
+            document.querySelectorAll('.data-privacy p')[9].textContent = cookiesParagraphs[0];
+            document.querySelectorAll('.data-privacy p')[10].textContent = cookiesParagraphs[1];
+            document.querySelectorAll('.data-privacy p')[11].textContent = cookiesParagraphs[2];
+            
+            h4Elements[11].textContent = t.contactFormTitle;
+            document.querySelectorAll('.data-privacy p')[12].textContent = t.contactFormText;
+            
+            // Footer
+            document.querySelector('footer p').innerHTML = `&copy; <span id="currentYear">${new Date().getFullYear()}</span> Malthe Vorbeck. ${t.copyright}`;
+        }
+
+        // Seite beim Laden übersetzen
+        translatePage(currentLang);
     </script>
 </body>
 </html> 

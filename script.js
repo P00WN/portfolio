@@ -192,4 +192,52 @@ if (shape) {
     shape.style.transform = `rotate(${randomDeg}deg)`;
   }, 5000);
 }
+
+// Timeline Animation
+const animateTimeline = () => {
+  const timelineItems = document.querySelectorAll('.timeline-item');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.2,
+    rootMargin: '0px 0px -100px 0px'
+  });
+  
+  timelineItems.forEach(item => {
+    observer.observe(item);
+  });
+};
+
+// Beim Laden der Seite ausführen
+document.addEventListener('DOMContentLoaded', function() {
+  // Aktuelles Jahr für das Copyright setzen
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+  
+  // Dark Mode aus dem Local Storage laden
+  if (localStorage.getItem('darkMode') === 'enabled') {
+    document.body.classList.add('dark-mode');
+    document.querySelector('.theme-toggle i').classList.replace('fa-moon', 'fa-sun');
+  }
+  
+  // Timeline Animation initialisieren
+  animateTimeline();
+  
+  // Aktuelle Sprache aus dem Local Storage laden
+  loadLanguage();
+  
+  // Modal Popup - sollte nach der Sprachumschaltung initialisiert werden
+  setupModals();
+  
+  // Cookie-Banner überprüfen
+  checkCookieConsent();
+  
+  // Easter Egg Spiel initialisieren
+  initTicTacToe();
+});
   

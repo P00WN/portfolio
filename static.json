@@ -4,6 +4,7 @@
   "routes": {
     "/styles/*": "styles/",
     "/scripts/*": "scripts/",
+    "/style.css": "style.css",
     "/**": "index.html"
   },
   "headers": {
@@ -11,7 +12,8 @@
       "Cache-Control": "public, max-age=0, must-revalidate"
     },
     "/**.css": {
-      "Cache-Control": "public, max-age=31536000, immutable"
+      "Cache-Control": "public, max-age=31536000, immutable",
+      "Content-Type": "text/css"
     },
     "/**.js": {
       "Cache-Control": "public, max-age=31536000, immutable"

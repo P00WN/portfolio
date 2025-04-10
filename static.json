@@ -5,6 +5,7 @@
     "/styles/*": "styles/",
     "/scripts/*": "scripts/",
     "/style.css": "style.css",
+    "/404.css": "404.css",
     "/**": "index.html"
   },
   "headers": {

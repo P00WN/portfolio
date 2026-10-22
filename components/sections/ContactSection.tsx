@@ -126,7 +126,7 @@ export default function ContactSection() {
               </h3>
               <div className="space-y-2">
                 {[
-                  { label: "LinkedIn", href: "https://linkedin.com/in/malthe-vorbeck" },
+                  { label: "LinkedIn", href: "https://www.linkedin.com/in/malthev" },
                   { label: "Xing", href: "https://xing.com/profile/malthe_vorbeck" },
                   { label: "GitHub", href: "https://github.com/P0WN" },
                 ].map((link) => (

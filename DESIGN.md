@@ -1,14 +1,17 @@
 ---
 version: alpha
 name: Portfolio
-description: Dark technical aesthetic for a datacenter operations portfolio. Deep navy surfaces, cyan as the single interaction color, monospace accents for infrastructure detail.
+description: Calm dark technical aesthetic for a datacenter operations portfolio. Deep navy surfaces, cyan interaction, warm gold highlight for pep. Motion is spring-based and scroll-driven.
 colors:
-  background: "#0a0e17"
-  surface: "#0f1923"
-  surface-muted: "#0d1520"
-  foreground: "#c8d6e5"
+  background: "#0b0e16"
+  surface: "#0f172a"
+  surface-strong: "#172438"
+  surface-muted: "#0c1321"
+  foreground: "#dcdde3"
+  foreground-muted: "#8c95a7"
   primary: "#00d4ff"
   secondary: "#5c6bc0"
+  highlight: "#ffd166"
   success: "#00e676"
 typography:
   h1:
@@ -19,12 +22,17 @@ typography:
   h2:
     fontFamily: "Inter"
     fontSize: "1.75rem"
-    fontWeight: 600
+    fontWeight: 700
     lineHeight: "1.2"
+  h3:
+    fontFamily: "Inter"
+    fontSize: "1.25rem"
+    fontWeight: 600
+    lineHeight: "1.3"
   body:
     fontFamily: "Inter"
     fontSize: "1rem"
-    lineHeight: "1.6"
+    lineHeight: "1.7"
   caption:
     fontFamily: "Inter"
     fontSize: "0.875rem"
@@ -38,11 +46,13 @@ spacing:
   md: "16px"
   lg: "24px"
   xl: "32px"
+  xl2: "48px"
   section: "96px"
 rounded:
   sm: "6px"
   md: "10px"
   lg: "16px"
+  xl: "24px"
   pill: "9999px"
 layout:
   maxWidth: "1200px"
@@ -58,12 +68,24 @@ components:
     rounded: "{rounded.lg}"
     padding: "{spacing.lg}"
   card-hover:
-    backgroundColor: "{colors.surface-muted}"
+    backgroundColor: "{colors.surface-strong}"
     textColor: "{colors.foreground}"
     rounded: "{rounded.lg}"
   badge:
     backgroundColor: "{colors.surface-muted}"
+    textColor: "{colors.foreground-muted}"
+    typography: "{typography.caption}"
+    rounded: "{rounded.pill}"
+    padding: "4px 12px"
+  badge-accent:
+    backgroundColor: "{colors.primary}/15"
     textColor: "{colors.primary}"
+    typography: "{typography.caption}"
+    rounded: "{rounded.pill}"
+    padding: "4px 12px"
+  badge-highlight:
+    backgroundColor: "{colors.highlight}/20"
+    textColor: "{colors.highlight}"
     typography: "{typography.caption}"
     rounded: "{rounded.pill}"
     padding: "4px 12px"
@@ -78,19 +100,19 @@ components:
     textColor: "#041018"
     typography: "{typography.body}"
     rounded: "{rounded.md}"
-    padding: "12px 24px"
+    padding: "12px 28px"
   button-primary-hover:
     backgroundColor: "{colors.secondary}"
     textColor: "#FFFFFF"
     typography: "{typography.body}"
     rounded: "{rounded.md}"
-    padding: "12px 24px"
-  button-secondary:
-    backgroundColor: "{colors.surface}"
-    textColor: "{colors.primary}"
+    padding: "12px 28px"
+  button-ghost:
+    backgroundColor: "transparent"
+    textColor: "{colors.foreground}"
     typography: "{typography.body}"
     rounded: "{rounded.md}"
-    padding: "12px 24px"
+    padding: "12px 28px"
   link:
     textColor: "{colors.primary}"
     typography: "{typography.body}"
@@ -98,62 +120,55 @@ components:
 
 # Portfolio
 
-Dark technical aesthetic for a datacenter operations portfolio. Deep navy
-surfaces carry the page, cyan is the only color that signals interaction, and
-monospace is reserved for infrastructure detail (hostnames, versions, stack
-names) rather than body copy.
+Calm dark technical aesthetic for a datacenter operations portfolio. Depth comes from layering and motion, not glare. **Cyan** (`primary`) is the only interaction color. A warm **gold** (`highlight`) appears sparingly — for highlights on the name, divider accents, and micro-icons — so the page stays calm but has pep. Monospace is reserved for infrastructure detail (hostnames, versions, stack names), never for body copy.
 
 ## Colors
 
-- **Background (#0a0e17):** Page canvas. Slightly blue-shifted black so the
-  cyan accent reads as light, not as neon.
-- **Surface (#0f1923):** Cards, panels, and the frosted header bar. One step
-  up from the canvas, never a hard border.
-- **Foreground (#c8d6e5):** Body text. Soft blue-grey, never pure white —
-  pure white on the navy canvas vibrates.
-- **Primary (#00d4ff):** The single interaction color. Links, focus rings,
-  active nav items, the primary button. Used sparingly so it keeps its weight.
-- **Secondary (#5c6bc0):** The hover state of the primary button and the
-  secondary gradient stop. Never used for text on dark surfaces.
-- **Success (#00e676):** Certificates earned, completed timeline entries.
+- **Background (#0b0e16):** Page canvas. Neutral black-blue so accents read clearly without vibrating.
+- **Surface (#0f172a):** Cards, panels, header bar. One step up from the canvas.
+- **Surface-strong (#172438):** Hover state of a card.
+- **Surface-muted (#0c1321):** Side-accent backgrounds, badge backdrops.
+- **Foreground (#dcdde3):** Body text. Soft blue-grey, never pure white.
+- **Foreground-muted (#8c95a7):** Secondary labels, captions.
+- **Primary (#00d4ff):** Links, focus rings, the active nav item, the primary button.
+- **Secondary (#5c6bc0):** Button hover state, gradient partner.
+- **Highlight (#ffd166):** Name gradient, divider flecks, badge accent. Warm counterpoint — used at low opacity only.
+- **Success (#00e676):** Completed timeline entries.
 
 ## Typography
 
-Inter for everything the reader actually reads: headings, body copy, and
-labels. JetBrains Mono appears only where the content is literally technical
-— a certificate issuer, a stack, a version string. Weight 500 is the floor for
-captions; below that, text gets lost against the dark canvas.
+Inter everywhere the reader reads: headings, body, labels. JetBrains Mono only where the content is literally technical — an issuer name, a version string, a shell command. Line height rises to 1.7 for readability; captions never drop below 500 weight.
 
-## Layout
+## Motion
 
-Content is capped at 1200px with a 720px reading column for prose sections.
-Sections are separated by 96px of vertical space rather than dividers, so the
-page reads as a continuous scroll. Gutters are 24px and collapse to 16px on
-mobile.
+- Entrance: each section staggers its children by 0.1s with spring physics (`mass 0.4, stiffness 300, damping 25`).
+- Scroll-driven: the timeline rail draws itself as it scrolls into view; skill bars count up to their target.
+- Micro: buttons get a horizontal shine sweep on hover; cards lift 4px with a border glow; the header rail fades color on scroll.
+- Honoring reduced motion: a global `@media (prefers-reduced-motion)` disables auto-animation — only hover intent animates.
 
 ## Elevation & Depth
 
-Depth comes from light, not shadow. Cards use a 1px translucent cyan border
-plus a backdrop blur over the canvas. Shadows are reserved for elements that
-actually float: the sticky header and the scroll indicator.
+Purely luminance: one translucent layer of surface over the canvas, a 1px border at `surface-muted` opacity. Floating elements (sticky header, scroll-to-top) get a 1px hairline shadow. No neon glow halos — `primary` appears in a gradient text or a 20% opacity ring only.
 
 ## Shapes
 
-Corners are soft but not round: 10px for controls, 16px for cards, fully
-rounded only for badges and pills.
+Soft corners only: 10px on controls and badges, 16px on cards, 24px on the hero image frame. Pills fully rounded.
+
+## Layout
+
+Content caps at 1200px; the main content column is 720px for prose, 1200px for grids. Sections are spaced 96px apart — no dividers. Gutters are 24px and collapse to 16px on mobile.
 
 ## Components
 
-- **button-primary** is the only high-emphasis action on a page. Cyan fill,
-  near-black label.
-- **button-secondary** is the quiet counterpart: surface fill, cyan label.
-- **badge** marks a neutral label. **badge-success** marks a completed state.
-- **card** is the default container for skills, certificates, and timeline
-  entries.
+- **button-primary** is the only high-emphasis action per page: cyan fill, near-black label, gold shine on hover.
+- **button-ghost** is the quiet link-style button: transparent, cyan label on hover.
+- **badge** is neutral. **badge-accent** uses primary at 15%. **badge-highlight** uses gold.
+- **card** is the default container; **card-hover** is its interactive state.
 
 ## Do's and Don'ts
 
-- Do keep cyan for interaction only; never use it as a large background fill.
-- Do use monospace for technical strings, not for headings.
-- Don't add a second high-emphasis button to a section.
-- Don't introduce new hues; extend the neutral ramp instead.
+- Do let motion be fast and springy (150–250ms), never looping neon pulses.
+- Do cap `highlight` usage at one element per section.
+- Do use `prefers-reduced-motion` to disable auto-animation.
+- Don't use pure white for body text; it vibrates against the canvas.
+- Don't use gold as an interaction color — only for highlights and accents.

@@ -14,7 +14,7 @@ export default function Footer() {
 
   const socialLinks = [
     {
-      href: "https://linkedin.com/in/malthe-vorbeck",
+      href: "https://www.linkedin.com/in/malthev",
       label: "LinkedIn",
       icon: <Linkedin size={18} />,
     },
